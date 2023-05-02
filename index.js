@@ -35,16 +35,18 @@ app.get("/", (req, res) => {
             const weatherDescription = weatherData.weather[0].description;
 
             // printing weatherData, temp, feelsLikeTemp and weather description below
-            console.log(weatherData);
+            // console.log(weatherData);
 
-            console.log(temp);
+            // console.log(temp);
 
-            console.log(feelsLikeTemp);
+            // console.log(feelsLikeTemp);
 
-            console.log(weatherDescription);
+            // console.log(weatherDescription);
+
+            res.send("<h1>the temp in houston, texas is " + temp + " degress.</h1>");
         })
     })
-    res.send("server is up and running");
+    // res.send("server is up and running");
 })
 
 

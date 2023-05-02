@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 
         response.on("data", function (data) {
             // logging data unparsed
-            console.log(data);
+            // console.log(data);
 
             // parsing the data and storing it in the weatherData variable
             const weatherData = JSON.parse(data);
@@ -34,6 +34,10 @@ app.get("/", (req, res) => {
             // variable to hold weather description
             const weatherDescription = weatherData.weather[0].description;
 
+            const icon = weatherData.weather[0].icon;
+
+            const imageURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+
             // printing weatherData, temp, feelsLikeTemp and weather description below
             // console.log(weatherData);
 
@@ -43,7 +47,13 @@ app.get("/", (req, res) => {
 
             // console.log(weatherDescription);
 
-            res.send("<h1>the temp in houston, texas is " + temp + " degress.</h1>");
+            res.write("<p>the weasther is currently " + weatherDescription + " .</p>");
+
+            res.write("<h1>the temp in houston, texas is " + temp + " degress.</h1>");
+
+            res.write("<img src=" + imageURL +  ">");
+
+            res.send();
         })
     })
     // res.send("server is up and running");
